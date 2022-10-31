@@ -1,15 +1,5 @@
-# HVBRD (v2 with web sockets)
-
-Interactive hoverboard experiment using a mobile phone and web sockets.
-
-**The original version of this project was built using a Daydream controller.
-To make it accessible to more people, I've changed it to use a mobile phone to connect to the browser via web sockets.**
 
 ## Demo
-
-![demo gif](hvbrd.gif)
-
-Try it live here: [http://bit.ly/hvbrd](http://bit.ly/hvbrd)
 
 ## Resources:
 
