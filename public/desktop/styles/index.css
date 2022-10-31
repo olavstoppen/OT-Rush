@@ -1,0 +1,143 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+#game {
+  width: 1440px;
+  height: 1024px;
+  border: 1px solid black;
+  margin: auto;
+  /* margin-top: 50px; */
+  box-sizing: border-box;
+  background-image: url("../img/startscreen.png");
+  position: relative;
+  background-size: contain;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 271px;
+  /* margin-top: 100px; */
+}
+
+#gameName {
+  font-family: Poller One;
+  font-size: 128px;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+#play {
+  position: absolute;
+  width: 299px;
+  height: 100px;
+  left: 595px;
+  top: 672px;
+  background-image: url("../img-buttons/Group21.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+
+#info {
+  position: absolute;
+  width: 259px;
+  height: 67px;
+  left: 615px;
+  top: 812px;
+  background-image: url("../img-buttons/intro.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  /* background-color: aqua; */
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+
+#frame {
+  margin-top: 50px;
+}
+
+#character {
+  position: absolute;
+  width: 195.76px;
+  height: 286.12px;
+  left: 967px;
+  top: 400px;
+  position: relative;
+  background-image: url("../img/pingu-side.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  /* background-color: aqua; */
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+
+#counter-minus {
+  position: absolute;
+  width: 259px;
+  height: 67px;
+  left: 247px;
+  top: 860px;
+  background-image: url("../img-buttons/skipIntro.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+
+#counter-plus {
+  position: absolute;
+  width: 259px;
+  height: 67px;
+  left: 925px;
+  top: 860px;
+  background-image: url("../img-buttons/Next-Btn.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+
+#buuble {
+  position: absolute;
+  width: 486.9px;
+  height: 276.14px;
+  left: 450px;
+  top: 240px;
+  background-image: url("../img-buttons/Group44.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}

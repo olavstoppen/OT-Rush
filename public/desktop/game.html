@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hoverboard game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Permanent+Marker|Teko:400"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="frame">
+      <div class="highScoresDiv">
+        <h2>HIGH SCORESs</h2>
+        <ol id="highScores"></ol>
+        <div onclick="startGame()" id="playbutton"></div>
+      </div>
+        <div id="game">
+          <div id="painz"></div>
+          <div id="gainz"></div>
+          <div id="character"></div>
+          <div id="white"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="./../socket.io/socket.io.js"></script>
+  <script src="index.js"></script>
+</html>
