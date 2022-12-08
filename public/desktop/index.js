@@ -1,8 +1,3 @@
-let zOrientation = 0;
-let zOrientationX = 0;
-var bluetoothConnected = false;
-let gameStarted = false;
-
 let gameScore = 0;
 const NO_OF_HIGH_SCORES = 10;
 const HIGH_SCORES = "highScores";
@@ -22,6 +17,7 @@ const moveLeftGeo = (number) => {
 };
 
 window.onload = () => {
+  showHighScores();
   if (!isMobile()) {
     const socket = io();
 
@@ -29,10 +25,8 @@ window.onload = () => {
       moveLeftGeo(Math.round(e));
     });
   }
-  showHighScores();
 };
 
-console.log(gameScore);
 const startGame = () => {
   setInterval(() => {
     var characterLeft = parseInt(
@@ -57,7 +51,6 @@ const startGame = () => {
     ) {
       gameScore = gameScore + 1;
     }
-    console.log(gameScore);
   }, 10);
 
   setInterval(() => {
@@ -92,7 +85,7 @@ const startGame = () => {
   painz.addEventListener("animationiteration", () => {
     var colors = [
       'url("img/blocker-stone.png")',
-      'url("img/tre.png")',
+      'url("img/blocker-tree.png")',
       'url("img/blocker-ice.png")',
     ];
     var randomImage = Math.floor(Math.random() * 3) + 0;
@@ -155,11 +148,25 @@ function saveHighScore(score, highScores) {
   highScores.push(score);
   highScores.sort((a, b) => b.score - a.score);
   highScores.splice(NO_OF_HIGH_SCORES);
-
   localStorage.setItem("highScores", JSON.stringify(highScores));
 }
 
 function gameOver() {
   checkHighScore(gameScore);
   gameScore = 0;
+  location.reload();
 }
+
+var timeleft = 4;
+const startGameNow = () => {
+  var downloadTimer = setInterval(function () {
+    timeleft--;
+    document.getElementById("playbutton").textContent = timeleft;
+    document.getElementById("playbutton").style.backgroundImage = "none";
+    if (timeleft <= 0) {
+      document.getElementById("playbutton").textContent = "";
+      clearInterval(downloadTimer);
+      startGame();
+    }
+  }, 1000);
+};

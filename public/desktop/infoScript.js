@@ -9,10 +9,10 @@ console.log(count);
 counterPlusElem.addEventListener("click", () => {
   count++;
   var colors = [
-    'url("img-buttons/Group45.png")',
-    'url("img-buttons/Group46.png")',
-    'url("img-buttons/Group47.png")',
-    'url("img-buttons/Frame1.png")',
+    'url("img-buttons/infoBox2.png")',
+    'url("img-buttons/infoBox3.png")',
+    'url("img-buttons/infoBox4.png")',
+    'url("img-buttons/controls.png")',
   ];
 
   document.getElementById("buuble").style.backgroundImage = colors[count];
