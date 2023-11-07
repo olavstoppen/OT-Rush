@@ -1,32 +1,65 @@
-* {
-  padding: 0;
-  margin: 0;
-}
 
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1920px;
+  height: 1080px;
+  margin: auto;
+}
 #game {
-  width: 1440px;
-  height: 1024px;
-  border: 1px solid black;
+width:532px;
+  height: 462px;
+
   margin: auto;
   box-sizing: border-box;
-  background-image: url("../img/startscreen.png");
+  background-image: url("../img/mockup_bg.png");
   position: relative;
   background-size: contain;
+  overflow: hidden;
 }
 
-.container {
+
+
+
+.middle-container {
   display: flex;
-  justify-content: center;
-  position: relative;
-  top: 271px;
+  
+}
+.top-part {
+  width: 100%;
+  
+}
+
+.left-part {
+  height: 100%;
+
+}
+.right-part {
+  height: 100%;
+}
+
+
+.menu-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  gap:64px;
+  padding: 32px 0 32px 0;
+}
+
+.button-menu {
+  display: flex;
+  gap:16px;
+  flex-direction: column;
+  align-items: center;
 }
 
 #gameName {
-  font-family: Poller One;
-  font-size: 128px;
+  font-size: 64px;
   font-weight: 400;
-  line-height: 28px;
-  letter-spacing: 0em;
+  color: white;
   text-align: left;
 }
 
@@ -65,9 +98,7 @@
   background-size: contain;
 }
 
-#frame {
-  margin-top: 50px;
-}
+
 
 #character {
   position: absolute;
@@ -128,7 +159,7 @@
   height: 276.14px;
   left: 450px;
   top: 240px;
-  background-image: url("../img-buttons/infoBox1.png");
+  background-image: url("../img/mockup_bg.png");
   background-repeat: no-repeat;
   background-position: center;
   display: flex;
@@ -137,4 +168,39 @@
   -moz-background-size: contain;
   -o-background-size: contain;
   background-size: contain;
+}
+
+
+.intro-wrapper {
+position: absolute;
+top: 295px;
+left: 0;
+height: 100%;
+width: 100%;
+
+}
+
+
+@keyframes scenerySlide {
+  0% {
+    top: 295pxpx;
+  }
+  90% {
+    top: 0;
+  }
+  100% {
+    top: 0;
+  }
+}
+
+@keyframes bgSlide {
+  0% {
+    background-position-y: 0;
+  }
+  90% {
+    background-position-y: -300px;
+  }
+  100% {
+    background-position-y: -300px;
+  }
 }

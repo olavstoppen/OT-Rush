@@ -4,23 +4,101 @@
     <meta charset="UTF-8" />
     <title>OT Rush</title>
     <link rel="stylesheet" href="styles/index.css" />
+    <link rel="stylesheet" href="styles/global.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&family=Vesper+Libre:wght@400;500;900&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div id="frame">
-      <div id="game">
-        <div class="container">
-          <div id="gameName">OT Rush</div>
+    <div id="custom-cursor"></div>
+
+    <div class="main-container">
+      <img class="top-part" src="../img/TopPart.png" />
+      <div class="middle-container">
+        <img class="left-part" src="../img/LeftPart.png" />
+        <div id="game">
+          <div class="meteor" id="meteor-1"></div>
+          <div class="meteor" id="meteor-2"></div>
+        <div class="intro-wrapper" id="scenery-wrapper">
+          <div id="background-container" class="scrollable-img">
+
+            <div id="pingu" style="top: 319px; left: 220px;"></div>
+            <div id="character" style="top: 356px; left: 220px;">
+              <div class="collider" style="left:23px; top: 1px;"></div>
+            </div>  
+          </div>
+          <div class="mountain-1"></div>
+          <div class="mountain-2"></div>
+          <div class="treeline-1" id="treeLine1"></div>
+          <div class="treeline-2" id="treeLine2"></div>
+          
+        
+        <div class="moon-container">
+          <div class="moon" id="moonEl"></div>
+        </div>
+        </div>
+          <div id="menu" class="menu-container">
+            <h1 id="gameName">OT Rush</h1>
+
+            <div class="button-menu">
+            <button  class="btn" onclick="goToGame()">
+              Play
+            </button>
+            <!--<a class="btn" href="./Info.html">
+              How to play
+            </a>-->
+          </div>
         </div>
 
-        <div id="character"></div>
-        <a href="./game.html">
-          <div id="play"></div>
-        </a>
-        <a href="./Info.html">
-          <div id="info"></div>
-        </a>
+        </div>
+        <img class="right-part" src="../img/RightPart.png" />
       </div>
+      <img class="top-part" src="../img/BottomPart.png" />
+
     </div>
   </body>
-  <script src="script.js"></script>
+  <script>
+
+window.onload = () => {
+  document.body.style.cursor = 'none'; // Hide the default cursor
+
+  const customCursor = document.getElementById('custom-cursor');
+  document.addEventListener('mousemove', (e) => {
+    customCursor.style.left = e.pageX + 'px';
+    customCursor.style.top = e.pageY + 'px';
+  });
+}
+
+
+    const goToGame = () => {
+    console.log("test");
+    var audio = new Audio('sound/select.mp3');
+    var audio2 = new Audio('sound/intro_sound.mp3');
+    audio.play();
+
+    audio.addEventListener("ended", function() {
+      
+      document.getElementById("menu").style.display = "none";
+    audio2.play();
+
+    document.getElementById("scenery-wrapper").style.animation = "scenerySlide 1.5s ease-in-out forwards";
+    document.getElementById("game").style.animation = "bgSlide 1.5s ease-in-out forwards";
+
+
+
+    audio2.addEventListener("ended", function() {
+
+
+      window.location.href = "/game.html";
+
+    });
+  });
+      
+      
+
+
+}
+
+  </script>
 </html>

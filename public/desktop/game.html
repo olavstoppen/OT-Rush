@@ -1,35 +1,84 @@
 <!DOCTYPE html>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <title>OT RUSH</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <link
-      href="https://fonts.googleapis.com/css?family=Permanent+Marker|Teko:400"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&family=Vesper+Libre:wght@400;500;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/global.css" />
+    <link rel="stylesheet" href="gameStyle.css" />
   </head>
   <body>
+    <div id="custom-cursor"></div>
     <div id="frame">
-      <div class="highScoresDiv">
-        <h2>HIGH SCORES</h2>
-        <ol id="highScores"></ol>
+        
       </div>
+      <div class="main-container">
+        <img class="top-part" src="../img/TopPart.png" />
+
+          
+
+        <div class="middle-container">
+          <img class="left-part" src="../img/LeftPart.png" />
+          <div class="highScoresDiv">
+            <h2>HIGH SCORES</h2>
+            <ul id="highScores"></ul>
+            </div>
       <div id="game">
-        <div id="painz"></div>
-        <div id="gainz"></div>
-        <div>
-          <div id="div">
-            <div onclick="startGameNow()" id="playbutton"></div>
-          </div>
-          <div id="character"></div>
-          <div id="white"></div>
+
+        <div id="game-over-screen" style="display:none;">     
+          <h2>Olavstoppen OS</h2>
+          <div>
+          <h3>Game over</h3>
+          <p>An error has occurred.  To continue:</p>
+          <span>Press ENTER or click this button:</span>          
+        </div>
+        <button onclick="gameOver()" id="restartbutton" class="btn">Restart game</button>
+        </div>
+
+        <p id="currentScore">Score: 0000000000</p>
+        <p id="timer">Time: 000</p>
+        <div id="background-container" class="scrollable-img"></div>
+        <div class="mountain-1"></div>
+        <div class="mountain-2"></div>
+        <div class="treeline-1" id="treeLine1"></div>
+        <div class="treeline-2" id="treeLine2"></div>
+
+      <div class="moon-container">
+        <div class="moon" id="moonEl"></div>
+      </div>
+
+      
+        <div id="objects-container">
+          <div id="pingu" style="top: 319px; left: 220px;"></div>
+          <div id="character" style="top: 356px; left: 220px;">
+            <div class="collider" style="left:27px; top: 1px;"></div>
+          </div>  
+        <div id="enemies" style="top: 500px; left: 40px;">
+          <div class="collider" style="top: 50px; left: 10px;"></div>
+        </div>
+      
+
+        <div id="fish" style="top: 500px; left: 300px;">
+          <div class="collider" style="top: 0px; left: 20px;"></div>
         </div>
       </div>
+          <div class="game-menu">
+            <button onclick="startGameNow()" id="playbutton" class="btn">Start</button>
+          </div>
+
+          <div id="white"></div>
+
+      </div>
+      <img class="right-part" src="../img/RightPart.png" />
+    </div>
+    <img class="top-part" src="../img/BottomPart.png" />
+
+  </div>
     </div>
   </body>
   <script type="text/javascript" src="./../socket.io/socket.io.js"></script>
-  <script src="index.js"></script>
+  <script src="gameLogic.js"></script>
 </html>

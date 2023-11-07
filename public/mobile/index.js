@@ -3,7 +3,7 @@ window.onload = function(){
     const noSleep = new NoSleep();
     noSleep.disable();
     const socket = io();
-    const button = document.getElementsByTagName('button')[0];
+    const button = document.getElementById("start-btn");
   
     if(isMobile()){        
         function handleOrientation(e){
@@ -16,6 +16,8 @@ window.onload = function(){
         button.addEventListener('click', enableNoSleep, false);
 
         function enableNoSleep() {
+            console.log("hello");
+            
             socket.emit('mobile connected');
             socket.on('start', () => ready = true)
             noSleep.enable();

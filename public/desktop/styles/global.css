@@ -1,0 +1,303 @@
+:root {
+    --ot-color-blue-1: #0F2FEA;
+    --ot-color-blue-2:#0C26BB;
+  }
+  body {
+background-color: black;
+cursor: none; /* Hide the default cursor */
+  }
+  * {
+    padding: 0;
+    margin: 0;
+    
+
+  }
+  #custom-cursor {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    background: url('../img/cursor.png') no-repeat;
+    background-size: cover;
+    pointer-events: none;
+    z-index: 99999999;
+  }
+  
+  h1,h2,h3,h4,h5,h6,span,div,p,button {
+    font-family: 'Pixelify Sans', sans-serif;
+  }  
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1920px;
+    height: 1080px;
+    margin: auto;
+  }
+  .middle-container {
+    display: flex;
+    position: relative; 
+  }
+  .top-part {
+    width: 100%;
+    
+  }
+  
+  .left-part {
+    height: 100%;
+  }
+  .right-part {
+    height: 100%;
+
+  }
+
+.btn {
+    padding: 16px;
+    text-decoration: none;
+    font-size: 1.2em;
+    background-color: var(--ot-color-blue-1);
+    border: 0px;
+    font-family: 'Pixelify Sans', sans-serif;
+    color:white;
+    position: relative;
+    box-shadow: inset -2px 2px 1px 1px grey, inset -2px -2px 1px 1px lightgray, inset 2px 0px 1px 1px lightgray;
+  }
+  
+  .btn:hover {
+    cursor: pointer;
+      background-color: var(--ot-color-blue-2);
+  }
+  
+  .btn:active {
+    top: 2px;
+    box-shadow: 
+      -2px 2px 1px 1px grey,
+      -2px -2px 1px 1px lightgray,
+      2px 0px 1px 1px lightgray; 
+  }
+  
+  .btn::after {
+    content: '';
+    background: black;
+    position: absolute;
+    left: -2.5%;
+    top: 0;
+    width: 105%;
+    height: 100%;
+    z-index: -1;
+  }
+  
+  .btn::before {
+    content: '';
+    background: black;
+    position: absolute;
+    left: 0;
+    top: -5%;
+    width: 100%;
+    height: 113%;
+    z-index: -1;
+  }
+  
+  .no-display {
+    display:none;
+  }
+
+
+
+
+.scrollable-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../img/snow_tex.png");
+  background-repeat: repeat-y; /* Repeat vertically */
+  animation: scrollBackground 5s linear infinite; /* Adjust duration as needed */
+  transform: perspective(400px) rotateX(60deg);
+}
+
+.mountain-1
+{
+  width: 100%;
+  height: 97px;
+  background-image: url("../img/mountain_1.png");
+  position: relative;
+  background-size: contain;
+  position: absolute;
+  top: 69px;
+  z-index: 2;
+}
+.mountain-2
+{
+  width: 100%;
+  height: 100px;
+  background-image: url("../img/mountain_2.png");
+  position: relative;
+  background-size: contain;
+  position: absolute;
+  top: 30px;
+  z-index: 1;
+}
+
+.treeline-1
+{
+  width: 400px;
+  height: 194px;
+  background-image: url("../img/treeline.png");
+  position: relative;
+  background-size: cover;
+  position: absolute;
+  top: 34px;
+  right: -198px;
+  z-index: 2;
+  transform: perspective(3px) rotateY(-1.5deg);
+  background-repeat: repeat-x; /* Repeat vertically */
+  animation: scrollBackground 5s linear infinite; 
+}
+
+.treeline-2
+{
+  width: 400px;
+  height: 194px;
+  background-image: url("../img/treeline.png");
+  position: relative;
+  background-size: cover;
+  position: absolute;
+  top: 34px;
+  left: -198px;
+  z-index: 2;
+  transform: perspective(3px) rotateY(1.5deg);
+}
+.moon-container {
+  width: 150px;
+  height: 150px;
+  top: 0px;
+  left: 194px;
+  z-index: 0;
+  position: absolute;
+overflow: hidden;
+}
+.moon
+{
+  width: 100%;
+  height: 100%;
+  background-image: url("../img/moon.png");
+  position: relative;
+  background-size: contain;
+
+}
+
+#pingu {
+  /*width: calc(2.4 * 100px);
+  height: calc(2.048 * 100px);*/
+  width:96px;
+  height:96px;
+  position: absolute;
+  background-image: url("../img/2nd.png");
+  background-repeat: no-repeat;
+  background-position: center;
+
+  /*top: calc(2.048 * 200px);
+  left: calc(2.4 * 200px);*/
+  left: 220px;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+  transition: left 0.3s ease; /* Add a smooth transition effect to the left property */
+  z-index: 12;
+}
+
+#character {
+  width:96px;
+  height:96px;
+  position: absolute;
+  background-image: url("../img/skateboard.png");
+  background-repeat: no-repeat;
+  background-position: center;
+
+  /*top: calc(2.048 * 200px);
+  left: calc(2.4 * 200px);*/
+  left: 220px;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+  transition: left 0.3s ease, transform 0.1s ease; /* Add a smooth transition effect to the left property */
+  z-index: 11;
+}
+
+.meteor{
+  position: relative;
+  width: 48px;
+  height: 48px;
+
+
+  background-image: url(../img/meteor.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+#meteor-1 {
+  animation: meteoFromRight 3s ease-out infinite;
+  opacity: .8;
+}
+
+#meteor-2 {
+  animation: meteoFromLeft 5s ease-out infinite;
+  opacity: .8;
+  
+    transform:  scale(0);
+}
+
+
+@keyframes meteoFromRight {
+  0% {
+    top: 100px;
+    right: -400px;
+    transform:  scale(0);
+  }
+
+  5% {
+    transform:  scale(1);
+    
+  }
+  90% {
+    top: 740px;
+    right: 500px;
+  }
+  100% {
+    top: 700px;
+    right: 500px;
+  }
+}
+
+@keyframes meteoFromLeft {
+  0% {
+    
+    transform:  scaleX(0);
+
+  }
+  30% {
+    top: -100px;
+    left: -50px;
+    transform:  scaleX(0);
+  }
+
+  35% {
+    transform:  scaleX(-1);
+    
+  }
+  90% {
+    top: 440px;    
+    left: 500px;
+    transform:  scaleX(-1);
+  }
+  100% {
+    top: 400px;
+    left: 500px;
+    transform:  scaleX(-1);
+
+  }
+}
