@@ -278,7 +278,7 @@ function gameOver() {
   location.reload();
 }
 
-var timeleft = 10;
+var timeleft = 60;
 
 const startGameNow = () => {
   var audio = new Audio("sound/start-game.mp3");
