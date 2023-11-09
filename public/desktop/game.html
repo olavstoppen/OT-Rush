@@ -32,12 +32,25 @@
           <h2>Olavstoppen OS</h2>
           <div>
           <h3>Game over</h3>
-          <p>An error has occurred.  To continue:</p>
+          <p id="game-over-score">Your score was: 0000</p>
+          <p>To continue:</p>
           <span>Press ENTER or click this button:</span>          
         </div>
         <button onclick="gameOver()" id="restartbutton" class="btn">Restart game</button>
         </div>
 
+        <div id="time-up-screen" style="display:none;">     
+          <img src="../img/timeUp.png"></img>
+          <h1>You made it!</h1>
+          <div>
+          <p id="time-up-score">Your score was: 0000</p>
+          <span>Press ENTER or click this button:</span>          
+        </div>
+        <button onclick="gameOver()" id="restartbutton" class="btn">Restart game</button>
+        </div>
+
+
+        
         <p id="currentScore">Score: 0000000000</p>
         <p id="timer">Time: 000</p>
         <div id="background-container" class="scrollable-img"></div>

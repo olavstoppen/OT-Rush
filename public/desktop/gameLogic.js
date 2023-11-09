@@ -11,6 +11,9 @@ const playbutton = document.getElementById("playbutton");
 const gameStates = ["startMode", "PlayMode", "GameOver"];
 let currentGameStates = gameStates[0];
 const gameOverScreen = document.getElementById("game-over-screen");
+const timeUpScreen = document.getElementById("time-up-screen");
+const timeUpScoreText = document.getElementById("time-up-score");
+const gameOverScoreText = document.getElementById("game-over-score");
 const board = document.getElementById("character");
 const pingu = document.getElementById("pingu");
 let boardCollider;
@@ -26,6 +29,7 @@ const backgroundContainer = document.getElementById("background-container");
 const treeLine1 = document.getElementById("treeLine1");
 const treeLine2 = document.getElementById("treeLine2");
 var bgMusic = new Audio("sound/bgmusic.mp3");
+let gameTimer;
 
 let acceleration = 4;
 let accelerationFactor = 0;
@@ -34,6 +38,8 @@ let maxSpeed = 100;
 
 let moveLeftGeoFlag = 0;
 window.onload = () => {
+
+
   const customCursor = document.getElementById('custom-cursor');
   document.addEventListener('mousemove', (e) => {
     customCursor.style.left = e.pageX + 'px';
@@ -237,14 +243,30 @@ function saveHighScore(score, highScores) {
   localStorage.setItem("highScores", JSON.stringify(highScores));
 }
 
-function showGameOverScreen() {
-  gameOverScreen.style.display = "flex";
+function showTimeUpScreen() {
+  timeUpScreen.style.display = "flex";
   backgroundContainer.style.display = "none";
   currentGameStates = gameStates[2];
   fish.remove();
   enemies.remove();
   board.remove();
   bgMusic.pause();
+  timeUpScoreText.textContent = "Yor score was: " + gameScore;
+  var audio = new Audio("sound/winner.mp3");
+  audio.play();
+}
+
+function showGameOverScreen() {
+  gameOverScreen.style.display = "flex";
+  backgroundContainer.style.display = "none";
+  currentGameStates = gameStates[2];
+  clearInterval(gameTimer);
+
+  fish.remove();
+  enemies.remove();
+  board.remove();
+  bgMusic.pause();
+  gameOverScoreText.textContent = "Yor score was: " + gameScore;
 
   var audio = new Audio("sound/critical.mp3");
   audio.play();
@@ -256,13 +278,14 @@ function gameOver() {
   location.reload();
 }
 
-var timeleft = 60;
+var timeleft = 10;
+
 const startGameNow = () => {
   var audio = new Audio("sound/start-game.mp3");
   audio.play();
   var timeIsRunningOutAudio = new Audio("sound/time_running_out2.mp3");;
 
-   var gameTimer = setInterval(function () {
+   gameTimer = setInterval(function () {
     timeleft--;
     document.getElementById("timer").textContent = "Time: 0" + timeleft;
     if(timeleft <= 10) {
@@ -272,7 +295,8 @@ const startGameNow = () => {
     if (timeleft <= 0) {
       timeIsRunningOutAudio.pause();
       clearInterval(gameTimer);
-      showGameOverScreen();
+        showTimeUpScreen()
+
     }
   }, 1000);
 
@@ -388,7 +412,6 @@ function fishSlideDown() {
       console.log("give points");
       gameScore = gameScore + 1;
       scoreText.innerText = "Score: 0000000000" + gameScore;
-
       if (!soundPlayed) {
         audio.play();
         soundPlayed = true;
