@@ -27,8 +27,12 @@ const treeLine1 = document.getElementById("treeLine1");
 const treeLine2 = document.getElementById("treeLine2");
 var bgMusic = new Audio("sound/bgmusic.mp3");
 
-let acceleration = 1;
+let acceleration = 4;
+let accelerationFactor = 0;
+let boardSpeed = 0;
+let maxSpeed = 100;
 
+let moveLeftGeoFlag = 0;
 window.onload = () => {
   const customCursor = document.getElementById('custom-cursor');
   document.addEventListener('mousemove', (e) => {
@@ -43,11 +47,28 @@ window.onload = () => {
 
 
 
-  document.addEventListener("keydown", (event) => {
+ /* document.addEventListener("keydown", (event) => {
     if (event.key === "a") {
       moveLeftGeo(-6); // Move left
     } else if (event.key === "d") {
       moveLeftGeo(6); // Move right
+    }
+  });*/
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "a") {
+      moveLeftGeoFlag = -1; // Set flag to move left
+    } else if (event.key === "d") {
+      moveLeftGeoFlag = 1; // Set flag to move right
+    }
+  });
+  
+  document.addEventListener("keyup", (event) => {
+    if (event.key === "a" || event.key === "d") {
+      console.log("keyup");
+      moveLeftGeoFlag = 0; // Reset flag when key is released
+      accelerationFactor = 0;
+      boardSpeed = 0;
     }
   });
 
@@ -57,7 +78,7 @@ window.onload = () => {
       gameOver();
     }
   });
-
+/*
   document.addEventListener("keyup", () => {
     // Reset acceleration when keys are released
     acceleration = 1;
@@ -69,7 +90,7 @@ window.onload = () => {
       // Increase acceleration when keys are held down
       acceleration = 10;
     }
-  });
+  });*/
   if (!isMobile()) {
     const socket = io();
 
@@ -78,6 +99,56 @@ window.onload = () => {
     });
   }
 };
+
+const moveLeft = () => {
+  if (moveLeftGeoFlag !== 0) {
+    let left = parseInt(window.getComputedStyle(board).getPropertyValue("left"));
+    boardSpeed = Math.round(moveLeftGeoFlag * acceleration * accelerationFactor);
+    if(boardSpeed > 0 && boardSpeed >= maxSpeed) {
+      console.log("max speed");
+      boardSpeed = maxSpeed;
+      console.log("speed= "+boardSpeed);
+      
+      left += boardSpeed
+    } else if (boardSpeed < 0 && boardSpeed <= (maxSpeed*-1)) {
+      left += maxSpeed*-1
+
+
+    } else {
+
+      left += boardSpeed
+    }
+    
+    accelerationFactor += 0.5 ;
+
+
+
+    if (moveLeftGeoFlag === -1) {
+      board.style.transform = " rotate(" + -15 + "deg)";
+      pingu.style.backgroundImage = "url(" + "img/1st.png" + ")";
+    } else if (moveLeftGeoFlag === 1) {
+      board.style.transform = " rotate(" + 15 + "deg)";
+      pingu.style.backgroundImage = "url(" + "img/3rd.png" + ")";
+    } else if (moveLeftGeoFlag === 0) { 
+      board.style.transform = " rotate(" + 0 + "deg)";
+      pingu.style.backgroundImage = "url(" + "img/2nd.png" + ")";
+    }
+  
+    if (left >= 15 && left < 419) {
+      board.style.left = left + "px";
+      pingu.style.left = left + "px";
+    }
+
+  }  else {
+    accelerationFactor = 0;
+    board.style.transform = " rotate(" + 0 + "deg)";
+    pingu.style.backgroundImage = "url(" + "img/2nd.png" + ")"; // Reset acceleration factor when no key is pressed
+  }
+
+  requestAnimationFrame(moveLeft);
+};
+
+requestAnimationFrame(moveLeft);
 
 const startGame = () => {
   document.getElementById("moonEl").style.animation =
@@ -95,8 +166,10 @@ function inRange(x, min, max) {
 
 const moveLeftGeo = (number) => {
   let left = parseInt(window.getComputedStyle(board).getPropertyValue("left"));
+  let speed = number;
 
-  left += number * acceleration;
+  left += speed ;
+  console.log(left);
 
   if (number > 0) {
     board.style.transform = " rotate(" + number * 3 + "deg)";
@@ -257,10 +330,10 @@ function enemySlideDown() {
 
     requestAnimationFrame(animate);
 
-    if (topPosition > 450) {
-      topPosition = 40;
+    if (topPosition > 500) {
+      topPosition = 30;
       origScale = 1;
-      enemySlideSpeed += getRandomNumber(0, 0.08);
+      enemySlideSpeed += getRandomNumber(0, 0.09);
       var colors = [
         'url("img/obstacle_1.png")',
         'url("img/obstacle_2.png")',
