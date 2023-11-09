@@ -61,6 +61,29 @@ cursor: none; /* Hide the default cursor */
     position: relative;
     box-shadow: inset -2px 2px 1px 1px grey, inset -2px -2px 1px 1px lightgray, inset 2px 0px 1px 1px lightgray;
   }
+
+  .btn:disabled {
+    background-color: #ababab;
+    color: #2f2f2f;
+    border: none;
+    box-shadow: none;
+    
+  }
+  .btn:disabled:hover {
+    background-color: #ababab;
+    color: #2f2f2f;
+    border: none;
+    box-shadow: none;
+    
+  }
+  .btn:disabled:active {
+    background-color: #ababab;
+    color: #2f2f2f;
+    border: none;
+    box-shadow: none;
+    top: 0;
+    
+  }
   
   .btn:hover {
     cursor: pointer;

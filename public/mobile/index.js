@@ -4,11 +4,15 @@ window.onload = function(){
     noSleep.disable();
     const socket = io();
     const button = document.getElementById("start-btn");
+    const status = document.getElementById("status");
   
     if(isMobile()){        
         function handleOrientation(e){
             if(ready){
                 socket.emit('orientation', e.gamma);
+
+                status.textContent = "Orientation data: " + e.gamma
+
             }
         }
 
@@ -16,13 +20,25 @@ window.onload = function(){
         button.addEventListener('click', enableNoSleep, false);
 
         function enableNoSleep() {
-            console.log("hello");
-            
-            socket.emit('mobile connected');
-            socket.on('start', () => ready = true)
-            noSleep.enable();
-            button.removeEventListener('touchstart', enableNoSleep, false);
+            if (!ready) {
+
+                console.log("hello");
+                
+                socket.emit('mobile connected');
+                socket.on('start', () => ready = true)
+                noSleep.enable();
+                button.textContent = "Running..."
+                status.textContent = "Readying the socket..."
+            } else {
+                    
+
+            }
         }
+    } else {
+        button.disabled = true;
+        status.textContent = "This is not a mobile device with orientation data"
+
+        
     }
 }
 
