@@ -101,7 +101,7 @@ window.onload = () => {
     const socket = io();
 
     socket.on("mobile orientation", function (e) {
-      moveLeftGeo(Math.round(e)*2);
+      moveLeftGeo(Math.round(e)*4);
     });
   }
 };
